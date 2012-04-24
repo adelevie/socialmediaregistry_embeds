@@ -1,0 +1,31 @@
+		<div id="registryDotGovWidget">
+<div id="registryDotGovAccounts">
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">	
+</script>
+<script type="text/javascript">
+	(function(){
+		var list;
+		list = document.getElementById("list");
+		$.getJSON('http://registry.usa.gov/accounts.json?service_id=github', function(data) {
+
+			var accounts;
+			accounts = data["accounts"];
+	
+			var html;
+			html = "<ul id='agency_accounts_widget'>";
+	
+			len = accounts.length;
+			for(var i=0; i<len; i++) {
+				var value = accounts[i];
+				html = html + "<li><a href=" + value["service_url"] + ">" + value["service_url"] + "</a> (<a href='http://registry.usa.gov/"+ value["details_url"] +"'>info</a>)</li>";
+			}
+	
+			html = html + "</ul>";
+	
+			$('#registryDotGovAccounts').append(html);		
+
+		});
+	})();
+</script>
+</div>
