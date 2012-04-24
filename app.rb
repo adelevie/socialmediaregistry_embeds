@@ -8,10 +8,6 @@ class App < Sinatra::Base
     end
     erb :index
   end
-  
-  get "/test" do
-    erb :test
-  end
 end
 
 class Client < Weary::Client
